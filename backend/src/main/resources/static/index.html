@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub — Discover & Book Events</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">🎟️ <span>EventHub</span></div>
+    <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="bookings.html">My Bookings</a>
+        <div class="nav-user">
+            <div class="avatar" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Discover & Book<br><span class="gradient-text">Amazing Events</span></h1>
+        <p>Concerts, Conferences, Comedy Shows and more — all in one place</p>
+        <div class="hero-stats">
+            <div class="stat"><strong id="stat-events">5</strong><span>Events</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong id="stat-bookings">18</strong><span>Bookings</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong>3</strong><span>Seat Types</span></div>
+        </div>
+    </div>
+    <div class="hero-visual">🎪</div>
+</section>
+
+<!-- EVENTS -->
+<main class="container">
+    <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <span id="event-count" class="count-badge"></span>
+    </div>
+
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading events...</p>
+    </div>
+    <div id="error" class="error-msg" style="display:none;">
+        ⚠️ Backend not running. Start Spring Boot first.
+    </div>
+    <div id="events-grid" class="events-grid" style="display:none;"></div>
+</main>
+
+<footer class="footer">
+    <p>🎟️ EventHub © 2026 &nbsp;|&nbsp; Built with Java Spring Boot + HTML/CSS/JS</p>
+</footer>
+
+<script src="auth.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

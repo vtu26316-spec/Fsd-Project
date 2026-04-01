@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Database — EventHub</title>
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a14;color:#e2e8f0;min-height:100vh}
+        .navbar{background:rgba(10,10,20,.97);border-bottom:1px solid #252540;padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+        .nav-brand{font-size:1.2rem;font-weight:700;color:#7c6fff}.nav-brand span{color:#fff}
+        .nav-links a{color:#64748b;text-decoration:none;font-size:.9rem;margin-left:1.5rem}.nav-links a:hover{color:#7c6fff}
+        .container{max-width:1200px;margin:0 auto;padding:2rem}
+        h1{color:#fff;font-size:1.6rem;margin-bottom:.3rem}
+        .subtitle{color:#64748b;font-size:.9rem;margin-bottom:2rem}
+        .refresh-bar{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+        .btn-refresh{padding:.6rem 1.4rem;background:#7c6fff;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:background .2s}
+        .btn-refresh:hover{background:#6a5fe0}
+        .last-updated{color:#64748b;font-size:.82rem}
+        .auto-badge{background:#052e16;color:#22c55e;border:1px solid #166534;padding:.25rem .7rem;border-radius:20px;font-size:.75rem;font-weight:600}
+
+        /* Stats */
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+        .stat-card{background:#12121f;border:1px solid #252540;border-radius:14px;padding:1.3rem}
+        .stat-label{color:#64748b;font-size:.8rem;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em}
+        .stat-value{font-size:2rem;font-weight:800;color:#7c6fff}
+        .stat-value.green{color:#22c55e}.stat-value.orange{color:#f59e0b}
+
+        /* Tables */
+        .section{margin-bottom:2.5rem}
+        .section-title{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+        .badge{background:#7c6fff;color:#fff;padding:.15rem .6rem;border-radius:20px;font-size:.75rem}
+        .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #252540}
+        table{width:100%;border-collapse:collapse;font-size:.85rem}
+        thead tr{background:#12121f}
+        th{padding:.8rem 1rem;text-align:left;color:#64748b;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #252540}
+        td{padding:.75rem 1rem;border-bottom:1px solid #1a1a2e;color:#e2e8f0}
+        tr:last-child td{border-bottom:none}
+        tr:hover td{background:#12121f}
+        .pill{padding:.2rem .6rem;border-radius:20px;font-size:.72rem;font-weight:600}
+        .pill-green{background:#052e16;color:#22c55e}
+        .pill-purple{background:#1e1b4b;color:#818cf8}
+        .pill-orange{background:#2d1a00;color:#f59e0b}
+        .pill-red{background:#2d0a0a;color:#ef4444}
+        .loading{text-align:center;padding:3rem;color:#64748b}
+        .spinner{width:36px;height:36px;border:3px solid #252540;border-top-color:#7c6fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">🎟️ <span>EventHub</span> — Live Database</div>
+    <div class="nav-links">
+        <a href="index.html">← Website</a>
+        <a href="bookings.html">Bookings</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>🗄️ Live Database Viewer</h1>
+    <p class="subtitle">Real-time view of all data in MySQL — refreshes every 10 seconds automatically</p>
+
+    <div class="refresh-bar">
+        <button class="btn-refresh" onclick="loadData()">🔄 Refresh Now</button>
+        <span class="auto-badge">⚡ Auto-refresh: 10s</span>
+        <span class="last-updated" id="last-updated"></span>
+    </div>
+
+    <div id="loading" class="loading"><div class="spinner"></div><p>Loading database...</p></div>
+    <div id="content" style="display:none;">
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">Total Events</div><div class="stat-value" id="s-events">—</div></div>
+            <div class="stat-card"><div class="stat-label">Total Bookings</div><div class="stat-value green" id="s-bookings">—</div></div>
+            <div class="stat-card"><div class="stat-label">Registered Users</div><div class="stat-value orange" id="s-users">—</div></div>
+            <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="s-revenue">—</div></div>
+        </div>
+
+        <!-- Bookings Table -->
+        <div class="section">
+            <div class="section-title">🎫 Bookings Table <span class="badge" id="b-count">0</span></div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr>
+                        <th>ID</th><th>Reference</th><th>Customer</th><th>Email</th>
+                        <th>Event</th><th>Tickets</th><th>Seat Type</th><th>Total</th><th>Date</th>
+                    </tr></thead>
+                    <tbody id="bookings-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Events Table -->
+        <div class="section">
+            <div class="section-title">📅 Events Table <span class="badge" id="e-count">0</span></div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr>
+                        <th>ID</th><th>Name</th><th>Venue</th><th>Date</th>
+                        <th>Capacity</th><th>Booked</th><th>Available</th><th>Price</th>
+                    </tr></thead>
+                    <tbody id="events-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="section">
+            <div class="section-title">👤 Users Table <span class="badge" id="u-count">0</span></div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>ID</th><th>Full Name</th><th>Username</th><th>Role</th><th>Registered</th></tr></thead>
+                    <tbody id="users-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+async function loadData() {
+    try {
+        const res  = await fetch('api/dashboard.php');
+        const data = await res.json();
+
+        document.getElementById('loading').style.display  = 'none';
+        document.getElementById('content').style.display  = 'block';
+        document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+
+        // Stats
+        document.getElementById('s-events').textContent   = data.events.length;
+        document.getElementById('s-bookings').textContent = data.bookings.length;
+        document.getElementById('s-users').textContent    = data.users.length;
+        document.getElementById('s-revenue').textContent  = 'R ' + parseFloat(data.total_revenue).toFixed(2);
+
+        // Bookings
+        document.getElementById('b-count').textContent = data.bookings.length;
+        document.getElementById('bookings-tbody').innerHTML = data.bookings.map(b => `
+            <tr>
+                <td>${b.id}</td>
+                <td><code style="color:#818cf8;font-size:.8rem">${b.booking_reference}</code></td>
+                <td>${b.customer_name}</td>
+                <td style="color:#64748b">${b.customer_email}</td>
+                <td>${b.event_name}</td>
+                <td><span class="pill pill-purple">${b.tickets}</span></td>
+                <td><span class="pill ${b.seat_type==='vip'?'pill-orange':b.seat_type==='standard'?'pill-purple':'pill-green'}">${b.seat_type}</span></td>
+                <td style="color:#22c55e;font-weight:700">R ${parseFloat(b.total_price).toFixed(2)}</td>
+                <td style="color:#64748b;font-size:.8rem">${b.created_at}</td>
+            </tr>`).join('');
+
+        // Events
+        document.getElementById('e-count').textContent = data.events.length;
+        document.getElementById('events-tbody').innerHTML = data.events.map(e => {
+            const pct = Math.round((e.booked_seats / e.total_capacity) * 100);
+            const pillClass = e.available <= 0 ? 'pill-red' : e.available <= 50 ? 'pill-orange' : 'pill-green';
+            return `<tr>
+                <td>${e.id}</td>
+                <td style="font-weight:600">${e.name}</td>
+                <td style="color:#64748b">${e.venue}</td>
+                <td>${e.date}</td>
+                <td>${e.total_capacity}</td>
+                <td>${e.booked_seats} <span style="color:#64748b;font-size:.75rem">(${pct}%)</span></td>
+                <td><span class="pill ${pillClass}">${e.available}</span></td>
+                <td style="color:#818cf8;font-weight:700">R ${parseFloat(e.price).toFixed(2)}</td>
+            </tr>`;
+        }).join('');
+
+        // Users
+        document.getElementById('u-count').textContent = data.users.length;
+        document.getElementById('users-tbody').innerHTML = data.users.map(u => `
+            <tr>
+                <td>${u.id}</td>
+                <td>${u.fullname}</td>
+                <td style="color:#818cf8">@${u.username}</td>
+                <td><span class="pill ${u.role==='admin'?'pill-orange':'pill-green'}">${u.role}</span></td>
+                <td style="color:#64748b;font-size:.8rem">${u.created_at}</td>
+            </tr>`).join('');
+
+    } catch(e) {
+        document.getElementById('loading').innerHTML = '<p style="color:#ef4444">⚠️ Could not connect. Is XAMPP running?</p>';
+    }
+}
+
+// Load on page open
+loadData();
+
+// Auto-refresh every 10 seconds
+setInterval(loadData, 10000);
+</script>
+</body>
+</html>

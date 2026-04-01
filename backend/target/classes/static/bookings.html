@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings — EventHub</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-brand">🎟️ <span>EventHub</span></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="bookings.html" class="active">My Bookings</a>
+        <div class="nav-user">
+            <div class="avatar" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="section-header">
+        <h2>All Bookings</h2>
+        <span id="booking-count" class="count-badge"></span>
+    </div>
+
+    <div id="loading" class="loading"><div class="spinner"></div><p>Loading bookings...</p></div>
+
+    <div id="empty" style="display:none;text-align:center;padding:3rem;color:#64748b;">
+        <p style="font-size:3rem;">🎫</p>
+        <p>No bookings yet. <a href="index.html" style="color:#7c6fff;">Browse events</a></p>
+    </div>
+
+    <div id="bookings-list"></div>
+</main>
+
+<footer class="footer"><p>🎟️ EventHub © 2026</p></footer>
+
+<script src="auth.js"></script>
+<script src="bookings.js"></script>
+</body>
+</html>

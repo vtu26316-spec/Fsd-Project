@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "▶ Start XAMPP",
+            "type": "shell",
+            "command": "Start-Process 'C:\\xampp\\xampp-control.exe'",
+            "presentation": { "reveal": "silent" }
+        },
+        {
+            "label": "🌐 Open Website",
+            "type": "shell",
+            "command": "Start-Process 'http://localhost/eventhub/login.html'",
+            "presentation": { "reveal": "silent" }
+        },
+        {
+            "label": "🗄️ Open Database",
+            "type": "shell",
+            "command": "Start-Process 'http://localhost/phpmyadmin/index.php?db=eventhub'",
+            "presentation": { "reveal": "silent" }
+        }
+    ]
+}

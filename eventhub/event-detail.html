@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details — EventHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-brand">🎟️ <span>EventHub</span></div>
+    <div class="nav-links">
+        <a href="index.html">← Events</a>
+        <a href="bookings.html">My Bookings</a>
+        <div class="nav-user">
+            <div class="avatar" id="nav-avatar"></div>
+            <span id="nav-username"></span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+<main class="container">
+    <div id="loading" class="loading"><div class="spinner"></div><p>Loading event...</p></div>
+    <div id="event-detail" style="display:none;">
+        <div class="detail-hero">
+            <div class="detail-left">
+                <div class="detail-tag" id="detail-tag"></div>
+                <h1 id="detail-name"></h1>
+                <div class="detail-meta-row">
+                    <span id="detail-date"></span>
+                    <span id="detail-venue"></span>
+                </div>
+                <p id="detail-desc"></p>
+                <div class="cap-label"><span>Availability</span><span id="detail-cap-text"></span></div>
+                <div class="cap-bar"><div class="cap-fill" id="detail-cap-fill"></div></div>
+            </div>
+            <div class="detail-right">
+                <div class="price-card">
+                    <div class="price-label">Starting from</div>
+                    <div class="price-big" id="detail-price"></div>
+                    <div class="price-sub">per ticket</div>
+                    <button class="btn-primary" id="book-btn" onclick="goBook()" style="margin-top:1.5rem;">🎟️ Book Now</button>
+                    <p class="secure-note">🔒 Secure checkout · Instant confirmation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="js/auth.js"></script>
+<script src="js/event-detail.js"></script>
+</body>
+</html>

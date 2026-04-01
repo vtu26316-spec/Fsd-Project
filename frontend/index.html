@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Ticketing Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-brand">🎟️ EventHub</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="bookings.html">My Bookings</a>
+            <div class="nav-user">
+                <span id="nav-username"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Discover & Book Events</h1>
+        <p>Find the best concerts, conferences, and festivals near you</p>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <main class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+
+        <!-- Loading spinner shown while fetching from API -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading events from server...</p>
+        </div>
+
+        <!-- Error message shown if API call fails -->
+        <div id="error" class="error-msg" style="display:none;">
+            ⚠️ Could not connect to the backend. Make sure Spring Boot is running on port 8080.
+        </div>
+
+        <!-- Events grid — populated dynamically by JavaScript fetch() -->
+        <div id="events-grid" class="events-grid" style="display:none;"></div>
+    </main>
+
+    <footer class="footer">
+        <p>EventHub © 2026 | Full-Stack Java + Spring Boot</p>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

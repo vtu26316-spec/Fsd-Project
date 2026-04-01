@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-container">
+        <div class="login-logo">🎟️ EventHub</div>
+        <h2>Sign in to continue</h2>
+        <p class="login-sub">Enter your credentials to access the platform</p>
+
+        <div id="login-error" class="error-msg" style="display:none;"></div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <p class="login-hint">
+            Demo credentials: <code>admin / admin123</code> &nbsp;|&nbsp; <code>user / user123</code>
+        </p>
+        <p class="login-hint" style="margin-top:0.8rem;">
+            No account? <a href="signup.html" style="color:#6c63ff;">Sign up here</a>
+        </p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

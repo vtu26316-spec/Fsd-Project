@@ -1,0 +1,44 @@
+====================================================
+  EventHub - How to Run on Any Windows Laptop
+====================================================
+
+REQUIREMENT: Java 21 must be installed.
+
+  Check by opening CMD and typing:  java -version
+
+  If not installed, download here:
+  https://www.oracle.com/java/technologies/downloads/#java21
+  (Download: Windows x64 Installer)
+
+----------------------------------------------------
+STEPS TO RUN:
+----------------------------------------------------
+
+1. Copy the entire "fsd project" folder to your laptop
+
+2. Double-click  start.bat
+
+3. A black window opens and starts the server
+   (First time takes 2-3 minutes to download files)
+
+4. Your browser opens automatically at:
+   http://localhost:8080/login.html
+
+5. Login with:
+   Username: admin
+   Password: admin123
+
+   OR click "Sign up" to create your own account
+
+----------------------------------------------------
+TO STOP THE SERVER:
+----------------------------------------------------
+Close the black terminal window titled "EventHub Backend"
+
+----------------------------------------------------
+IF BROWSER DOESN'T OPEN AUTOMATICALLY:
+----------------------------------------------------
+Open your browser manually and go to:
+http://localhost:8080/login.html
+
+====================================================

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">🎟️ EventHub</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="bookings.html" class="active">My Bookings</a>
+            <div class="nav-user">
+                <span id="nav-username"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 class="section-title">All Bookings</h2>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Fetching bookings from server...</p>
+        </div>
+
+        <div id="no-bookings" style="display:none;" class="empty-state">
+            <p>🎫 No bookings yet. <a href="index.html">Browse events</a> to get started!</p>
+        </div>
+
+        <div id="bookings-list" style="display:none;"></div>
+    </main>
+
+    <footer class="footer">
+        <p>EventHub © 2026 | Full-Stack Java + Spring Boot</p>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="bookings.js"></script>
+</body>
+</html>

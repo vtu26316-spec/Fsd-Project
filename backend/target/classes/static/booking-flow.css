@@ -1,0 +1,326 @@
+/* =============================================
+   BOOKING FLOW - Multi-step stepper styles
+   ============================================= */
+
+/* Event banner at top */
+.event-banner {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.banner-info h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.3rem; }
+.banner-info span { color: #aaa; font-size: 0.85rem; margin-right: 1rem; }
+
+.banner-seats { text-align: right; }
+.seats-left { color: #6c63ff; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 0.4rem; }
+.mini-bar { background: #2a2a4a; border-radius: 10px; height: 6px; width: 120px; }
+.mini-fill { background: linear-gradient(90deg, #6c63ff, #a78bfa); height: 100%; border-radius: 10px; }
+
+/* ── STEPPER ── */
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 70px;
+}
+
+.step-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1a1a2e;
+    border: 2px solid #333;
+    color: #555;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.step-label {
+    font-size: 0.72rem;
+    color: #555;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.step.active .step-circle {
+    background: #6c63ff;
+    border-color: #6c63ff;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(108,99,255,0.5);
+}
+.step.active .step-label { color: #6c63ff; font-weight: bold; }
+
+.step.done .step-circle {
+    background: #4caf50;
+    border-color: #4caf50;
+    color: #fff;
+}
+.step.done .step-circle::before { content: '✓'; }
+.step.done .step-circle { font-size: 0; }
+.step.done .step-circle::before { font-size: 1rem; }
+.step.done .step-label { color: #4caf50; }
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: #2a2a4a;
+    margin-bottom: 1.4rem;
+    min-width: 30px;
+    max-width: 80px;
+}
+
+/* ── STEP PANELS ── */
+.step-panel {
+    display: none;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 14px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.step-panel.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-title {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.panel-sub {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ── STEP ACTIONS (buttons row) ── */
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.8rem;
+    gap: 1rem;
+}
+
+.btn-outline {
+    padding: 0.7rem 1.4rem;
+    background: transparent;
+    border: 1px solid #444;
+    color: #aaa;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+.btn-outline:hover { border-color: #6c63ff; color: #6c63ff; }
+
+/* ── SEAT TYPE CARDS ── */
+.seat-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.seat-type-card {
+    background: #0f0f1a;
+    border: 2px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.seat-type-card:hover {
+    border-color: #6c63ff;
+    transform: translateY(-3px);
+}
+
+.seat-type-card.selected {
+    border-color: #6c63ff;
+    background: #1a1a3a;
+    box-shadow: 0 0 16px rgba(108,99,255,0.3);
+}
+
+.st-icon  { font-size: 2rem; margin-bottom: 0.4rem; }
+.st-label { font-size: 1rem; font-weight: bold; color: #fff; margin-bottom: 0.3rem; }
+.st-desc  { font-size: 0.75rem; color: #888; margin-bottom: 0.6rem; line-height: 1.4; }
+.st-price { font-size: 0.9rem; color: #6c63ff; font-weight: bold; }
+
+/* ── ORDER SUMMARY ── */
+.order-summary {
+    background: #0f0f1a;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.order-summary h4 {
+    color: #aaa;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: #aaa;
+    border-bottom: 1px solid #1a1a2e;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-row span:last-child { color: #fff; }
+.summary-row.total-row {
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+}
+.summary-row.total-row span:last-child { color: #6c63ff; font-size: 1.1rem; }
+
+/* ── PAYMENT FORM ── */
+.card-input-wrap {
+    position: relative;
+}
+.card-input-wrap input { padding-right: 2.5rem; }
+.card-icon {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.btn-pay {
+    background: linear-gradient(135deg, #6c63ff, #a78bfa);
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+    letter-spacing: 0.03em;
+}
+.btn-pay:hover { background: linear-gradient(135deg, #5a52e0, #9070e0); }
+
+/* ── CONFIRMATION ── */
+.confirm-wrapper {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.confirm-checkmark {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    0%   { transform: scale(0); }
+    70%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.confirm-wrapper h2 { color: #4caf50; font-size: 1.8rem; margin-bottom: 0.3rem; }
+
+/* Ticket card */
+.ticket-card {
+    background: #0f0f1a;
+    border: 1px solid #2a2a4a;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 1.5rem auto;
+    max-width: 420px;
+    text-align: left;
+}
+
+.ticket-header {
+    background: linear-gradient(135deg, #6c63ff, #a78bfa);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.ticket-event { color: #fff; font-weight: bold; font-size: 1.05rem; }
+.ticket-ref   { font-family: monospace; background: rgba(0,0,0,0.3); color: #fff; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.85rem; }
+
+.ticket-divider {
+    text-align: center;
+    color: #333;
+    font-size: 1.2rem;
+    border-top: 2px dashed #2a2a4a;
+    border-bottom: 2px dashed #2a2a4a;
+    padding: 0.3rem;
+    background: #0a0a14;
+}
+
+.ticket-body { padding: 1.2rem 1.5rem; }
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid #1a1a2e;
+    font-size: 0.88rem;
+    color: #aaa;
+}
+.ticket-row:last-child { border-bottom: none; }
+.ticket-row strong { color: #fff; }
+.ticket-row.highlight-row strong { color: #6c63ff; font-size: 1rem; }
+
+.confirm-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .seat-types { grid-template-columns: 1fr; }
+    .form-row   { grid-template-columns: 1fr; }
+    .stepper    { gap: 0; }
+    .step-label { font-size: 0.6rem; }
+}

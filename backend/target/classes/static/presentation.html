@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Presentation - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">🎟️ EventHub</div>
+        <div class="nav-links">
+            <a href="index.html">← Back to Website</a>
+        </div>
+    </nav>
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide slide-hero">
+        <div class="slide-content center">
+            <div class="slide-number">01</div>
+            <h1 class="ppt-title">EventHub</h1>
+            <h2 class="ppt-subtitle">End-to-End Event Lifecycle & Ticketing Platform</h2>
+            <p class="ppt-desc">A Full-Stack Web Application built with Java Spring Boot + HTML/CSS/JavaScript</p>
+            <div class="tech-pills">
+                <span class="pill java">Java 21</span>
+                <span class="pill spring">Spring Boot 3</span>
+                <span class="pill db">H2 Database</span>
+                <span class="pill jpa">JPA / Hibernate</span>
+                <span class="pill js">JavaScript</span>
+                <span class="pill css">CSS3</span>
+                <span class="pill rest">REST API</span>
+            </div>
+            <div class="marks-badge">Total: 20 Marks</div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: DESIGN (5 marks) -->
+    <section class="slide slide-design">
+        <div class="slide-content">
+            <div class="slide-number">02</div>
+            <div class="rubric-badge">Design — 5 Marks</div>
+            <h2 class="slide-title">🎨 UI Design & Responsiveness</h2>
+
+            <div class="three-col">
+                <div class="feature-box">
+                    <div class="feature-icon">✨</div>
+                    <h4>Creative Design</h4>
+                    <p>Dark-mode premium theme with purple gradient accents. Inspired by real-world ticketing platforms like BookMyShow.</p>
+                    <code>background: #0f0f1a<br>accent: #6c63ff</code>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive Layout</h4>
+                    <p>CSS Grid with <strong>auto-fill</strong> makes cards adapt to any screen. Media queries collapse layout on mobile.</p>
+                    <code>grid-template-columns:<br>repeat(auto-fill, minmax(300px,1fr))</code>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Real-World Relevance</h4>
+                    <p>Login, Signup, Event Listing, Seat Booking, Payment, Confirmation — mirrors a real ticketing system.</p>
+                    <code>6 pages, 4-step<br>booking flow</code>
+                </div>
+            </div>
+
+            <div class="pages-flow">
+                <div class="flow-step">🔐 Login</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">🏠 Home</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">📋 Event Detail</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">👤 Details</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">💺 Seat Type</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">💳 Payment</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">✅ Confirmation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: TECHNICAL IMPLEMENTATION (5 marks) -->
+    <section class="slide slide-tech">
+        <div class="slide-content">
+            <div class="slide-number">03</div>
+            <div class="rubric-badge">Technical Implementation — 5 Marks</div>
+            <h2 class="slide-title">⚙️ Technology Stack</h2>
+
+            <div class="stack-table">
+                <div class="stack-row header-row">
+                    <span>Layer</span>
+                    <span>Technology</span>
+                    <span>Where Used</span>
+                    <span>Why</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer frontend">Frontend</span>
+                    <span>HTML5 + CSS3</span>
+                    <span>All 6 pages — structure & styling</span>
+                    <span>Standard web markup & dark theme</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer frontend">Frontend</span>
+                    <span>Vanilla JavaScript</span>
+                    <span>app.js, booking-flow.js, auth.js</span>
+                    <span>Dynamic DOM, fetch() API calls</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer backend">Backend</span>
+                    <span>Java 21</span>
+                    <span>All server-side logic</span>
+                    <span>Strongly typed, enterprise-grade</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer backend">Backend</span>
+                    <span>Spring Boot 3</span>
+                    <span>REST API, auto-config, embedded Tomcat</span>
+                    <span>Rapid development, production-ready</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer backend">Backend</span>
+                    <span>Spring Data JPA</span>
+                    <span>EventRepository, BookingRepository</span>
+                    <span>Auto-generates SQL from Java methods</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer db">Database</span>
+                    <span>H2 (In-Memory SQL)</span>
+                    <span>events table, bookings table</span>
+                    <span>Zero install, auto-seeded on startup</span>
+                </div>
+                <div class="stack-row">
+                    <span class="layer db">Database</span>
+                    <span>data.sql</span>
+                    <span>5 events + 18 bookings seeded</span>
+                    <span>Demo data ready on every run</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: ARCHITECTURE DIAGRAM -->
+    <section class="slide slide-arch">
+        <div class="slide-content">
+            <div class="slide-number">04</div>
+            <div class="rubric-badge">Integration — Frontend ↔ Backend ↔ Database</div>
+            <h2 class="slide-title">🏗️ How Frontend & Backend Are Connected</h2>
+
+            <div class="arch-diagram">
+
+                <div class="arch-col">
+                    <div class="arch-box browser">
+                        <div class="arch-icon">🌐</div>
+                        <strong>Browser</strong>
+                        <small>HTML + CSS + JS</small>
+                        <div class="arch-files">
+                            index.html<br>
+                            booking-flow.html<br>
+                            app.js / auth.js
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-connector">
+                    <div class="conn-line"></div>
+                    <div class="conn-label">HTTP Request<br><code>fetch('/api/events')</code></div>
+                    <div class="conn-label">JSON Response<br><code>[{id,name,price...}]</code></div>
+                    <div class="conn-line"></div>
+                    <div class="conn-protocol">REST API<br>Port 8080<br>@CrossOrigin</div>
+                </div>
+
+                <div class="arch-col">
+                    <div class="arch-box spring">
+                        <div class="arch-icon">☕</div>
+                        <strong>Spring Boot</strong>
+                        <small>Java Backend</small>
+                        <div class="arch-files">
+                            EventController<br>
+                            BookingController<br>
+                            EventService<br>
+                            BookingService
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-connector">
+                    <div class="conn-line"></div>
+                    <div class="conn-label">JPA Query<br><code>findAll()</code></div>
+                    <div class="conn-label">Entity Objects<br><code>Event, Booking</code></div>
+                    <div class="conn-line"></div>
+                    <div class="conn-protocol">Spring Data JPA<br>Hibernate ORM<br>Auto SQL</div>
+                </div>
+
+                <div class="arch-col">
+                    <div class="arch-box database">
+                        <div class="arch-icon">🗄️</div>
+                        <strong>H2 Database</strong>
+                        <small>In-Memory SQL</small>
+                        <div class="arch-files">
+                            events table<br>
+                            bookings table<br>
+                            data.sql seed
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="connection-explain">
+                <div class="conn-step">
+                    <span class="step-num">1</span>
+                    <p>User clicks "Book Now" → JavaScript calls <code>fetch('/api/bookings', {method:'POST', body: JSON})</code></p>
+                </div>
+                <div class="conn-step">
+                    <span class="step-num">2</span>
+                    <p><code>@PostMapping</code> in <strong>BookingController.java</strong> receives the request, reads <code>@RequestBody</code></p>
+                </div>
+                <div class="conn-step">
+                    <span class="step-num">3</span>
+                    <p><strong>BookingService.java</strong> validates capacity, generates reference, calls <code>bookingRepository.save()</code></p>
+                </div>
+                <div class="conn-step">
+                    <span class="step-num">4</span>
+                    <p><strong>JPA/Hibernate</strong> runs <code>INSERT INTO bookings ...</code> automatically — no SQL written by us</p>
+                </div>
+                <div class="conn-step">
+                    <span class="step-num">5</span>
+                    <p>Spring returns the saved Booking as <strong>JSON</strong> → JavaScript shows the confirmation ticket card</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: LAYERED ARCHITECTURE -->
+    <section class="slide slide-layers">
+        <div class="slide-content">
+            <div class="slide-number">05</div>
+            <div class="rubric-badge">Clean Modular Code</div>
+            <h2 class="slide-title">📦 Layered Architecture Pattern</h2>
+
+            <div class="layers-diagram">
+                <div class="layer-box controller-layer">
+                    <strong>Controller Layer</strong>
+                    <span>EventController.java &nbsp;|&nbsp; BookingController.java</span>
+                    <p>Handles HTTP requests. Maps URLs to methods. Returns JSON responses.</p>
+                    <code>@RestController &nbsp; @GetMapping &nbsp; @PostMapping &nbsp; ResponseEntity</code>
+                </div>
+                <div class="layer-arrow">↕ calls</div>
+                <div class="layer-box service-layer">
+                    <strong>Service Layer</strong>
+                    <span>EventService.java &nbsp;|&nbsp; BookingService.java</span>
+                    <p>Contains business logic. Validates capacity. Generates booking reference. Calculates price.</p>
+                    <code>@Service &nbsp; @Autowired &nbsp; UUID.randomUUID()</code>
+                </div>
+                <div class="layer-arrow">↕ calls</div>
+                <div class="layer-box repo-layer">
+                    <strong>Repository Layer</strong>
+                    <span>EventRepository.java &nbsp;|&nbsp; BookingRepository.java</span>
+                    <p>Data access. Extends JpaRepository — gets findAll(), save(), findById() for FREE.</p>
+                    <code>@Repository &nbsp; JpaRepository&lt;Event, Long&gt;</code>
+                </div>
+                <div class="layer-arrow">↕ maps to</div>
+                <div class="layer-box model-layer">
+                    <strong>Model / Entity Layer</strong>
+                    <span>Event.java &nbsp;|&nbsp; Booking.java</span>
+                    <p>Java classes that map to database tables. JPA creates the SQL tables automatically.</p>
+                    <code>@Entity &nbsp; @Table &nbsp; @Id &nbsp; @ManyToOne &nbsp; @JoinColumn</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: API ENDPOINTS -->
+    <section class="slide slide-api">
+        <div class="slide-content">
+            <div class="slide-number">06</div>
+            <div class="rubric-badge">REST API — Backend Development</div>
+            <h2 class="slide-title">🔌 API Endpoints</h2>
+
+            <div class="api-table">
+                <div class="api-row api-header">
+                    <span>Method</span>
+                    <span>Endpoint</span>
+                    <span>What it does</span>
+                    <span>Try it</span>
+                </div>
+                <div class="api-row">
+                    <span class="method get">GET</span>
+                    <span><code>/api/events</code></span>
+                    <span>Returns all 5 events as JSON array</span>
+                    <a href="/api/events" target="_blank" class="try-btn">Try →</a>
+                </div>
+                <div class="api-row">
+                    <span class="method get">GET</span>
+                    <span><code>/api/events/{id}</code></span>
+                    <span>Returns one event by ID</span>
+                    <a href="/api/events/1" target="_blank" class="try-btn">Try →</a>
+                </div>
+                <div class="api-row">
+                    <span class="method post">POST</span>
+                    <span><code>/api/bookings</code></span>
+                    <span>Creates a new booking, updates seat count</span>
+                    <span class="try-btn-disabled">Via form</span>
+                </div>
+                <div class="api-row">
+                    <span class="method get">GET</span>
+                    <span><code>/api/bookings</code></span>
+                    <span>Returns all bookings with event details</span>
+                    <a href="/api/bookings" target="_blank" class="try-btn">Try →</a>
+                </div>
+                <div class="api-row">
+                    <span class="method get">GET</span>
+                    <span><code>/h2-console</code></span>
+                    <span>Live database browser — see tables & data</span>
+                    <a href="/h2-console" target="_blank" class="try-btn">Open →</a>
+                </div>
+            </div>
+
+            <div class="json-example">
+                <p class="json-label">Sample JSON response from <code>GET /api/events/1</code></p>
+                <pre>{
+  "id": 1,
+  "name": "Rock Night Live",
+  "venue": "City Arena, Cape Town",
+  "date": "2026-04-15",
+  "totalCapacity": 500,
+  "bookedSeats": 120,
+  "availableSeats": 380,
+  "price": 250.00
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: VIVA VOCE PREP -->
+    <section class="slide slide-viva">
+        <div class="slide-content">
+            <div class="slide-number">07</div>
+            <div class="rubric-badge">Viva Voce — 5 Marks</div>
+            <h2 class="slide-title">🎓 Key Concepts to Explain</h2>
+
+            <div class="qa-grid">
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is Spring Boot?</div>
+                    <div class="qa-a">A: A Java framework that auto-configures a web server (Tomcat), REST API handling, and database connection. We just write business logic — Spring handles the rest.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is JPA / Hibernate?</div>
+                    <div class="qa-a">A: JPA is Java Persistence API — it maps Java classes to database tables. Hibernate is the implementation. We write Java, it writes SQL automatically.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: How does frontend connect to backend?</div>
+                    <div class="qa-a">A: JavaScript uses <code>fetch()</code> to send HTTP requests to Spring Boot REST endpoints. Spring returns JSON. JS reads the JSON and updates the page.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is REST API?</div>
+                    <div class="qa-a">A: REST = Representational State Transfer. It's a standard way for frontend and backend to communicate using HTTP methods: GET (read), POST (create), PUT (update), DELETE.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is @RestController?</div>
+                    <div class="qa-a">A: A Spring annotation that marks a class as a REST API handler. Every method automatically converts its return value to JSON and sends it as an HTTP response.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is the difference between Service and Controller?</div>
+                    <div class="qa-a">A: Controller handles HTTP (what URL, what method). Service handles business logic (can we book? how much does it cost?). Separation of concerns.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What database is used?</div>
+                    <div class="qa-a">A: H2 — an in-memory SQL database. It starts with the app, loads seed data from data.sql, and is accessible at /h2-console. No installation needed.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="qa-q">Q: What is @ManyToOne in Booking.java?</div>
+                    <div class="qa-a">A: It defines a database relationship — many bookings can belong to one event. JPA creates a foreign key column <code>event_id</code> in the bookings table automatically.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: LIVE DEMO GUIDE -->
+    <section class="slide slide-demo">
+        <div class="slide-content">
+            <div class="slide-number">08</div>
+            <div class="rubric-badge">Presentation & Demonstration — 5 Marks</div>
+            <h2 class="slide-title">🖥️ Live Demo Flow</h2>
+
+            <div class="demo-steps">
+                <div class="demo-step">
+                    <div class="demo-num">1</div>
+                    <div class="demo-info">
+                        <strong>Show Login Page</strong>
+                        <p>Go to <code>http://localhost:8080/login.html</code> — enter <code>admin / admin123</code></p>
+                        <p class="demo-point">👉 Point out: sessionStorage, auth.js, redirect on success</p>
+                    </div>
+                </div>
+                <div class="demo-step">
+                    <div class="demo-num">2</div>
+                    <div class="demo-info">
+                        <strong>Show Home Page — Live API Call</strong>
+                        <p>Open DevTools (F12) → Network tab → refresh page → show <code>/api/events</code> request</p>
+                        <p class="demo-point">👉 Point out: fetch() in app.js, JSON response, loading spinner</p>
+                    </div>
+                </div>
+                <div class="demo-step">
+                    <div class="demo-num">3</div>
+                    <div class="demo-info">
+                        <strong>Show Raw API JSON</strong>
+                        <p>Open new tab → <code>http://localhost:8080/api/events</code></p>
+                        <p class="demo-point">👉 Point out: This is what the backend returns — pure JSON from Java</p>
+                    </div>
+                </div>
+                <div class="demo-step">
+                    <div class="demo-num">4</div>
+                    <div class="demo-info">
+                        <strong>Complete Full Booking Flow</strong>
+                        <p>Click event → Book Now → fill details → choose VIP → enter card → Pay Now → show confirmation ticket</p>
+                        <p class="demo-point">👉 Point out: 4-step stepper, real-time price update, booking reference</p>
+                    </div>
+                </div>
+                <div class="demo-step">
+                    <div class="demo-num">5</div>
+                    <div class="demo-info">
+                        <strong>Show Database Live</strong>
+                        <p>Go to <code>http://localhost:8080/h2-console</code> → JDBC URL: <code>jdbc:h2:mem:ticketingdb</code> → run <code>SELECT * FROM bookings</code></p>
+                        <p class="demo-point">👉 Point out: New booking is in the database — full stack working!</p>
+                    </div>
+                </div>
+                <div class="demo-step">
+                    <div class="demo-num">6</div>
+                    <div class="demo-info">
+                        <strong>Show Signup</strong>
+                        <p>Logout → Sign up with a new account → login with it</p>
+                        <p class="demo-point">👉 Point out: localStorage for user persistence, validation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: SUMMARY -->
+    <section class="slide slide-summary">
+        <div class="slide-content center">
+            <div class="slide-number">09</div>
+            <h2 class="slide-title">📊 Marks Summary</h2>
+
+            <div class="marks-grid">
+                <div class="marks-box">
+                    <div class="marks-score">5/5</div>
+                    <div class="marks-label">Design</div>
+                    <div class="marks-points">Dark theme · Responsive grid · Real-world flow · 6 pages · Animations</div>
+                </div>
+                <div class="marks-box">
+                    <div class="marks-score">5/5</div>
+                    <div class="marks-label">Technical Implementation</div>
+                    <div class="marks-points">Spring Boot REST API · JPA + H2 DB · fetch() integration · Layered architecture · Modular code</div>
+                </div>
+                <div class="marks-box">
+                    <div class="marks-score">5/5</div>
+                    <div class="marks-label">Presentation & Demo</div>
+                    <div class="marks-points">Live API demo · Full booking flow · DB console · Network tab · This presentation page</div>
+                </div>
+                <div class="marks-box">
+                    <div class="marks-score">5/5</div>
+                    <div class="marks-label">Viva Voce</div>
+                    <div class="marks-points">REST · JPA · @RestController · fetch() · Layered arch · @ManyToOne · H2 · Spring Boot</div>
+                </div>
+            </div>
+
+            <div class="total-marks">Total: 20 / 20</div>
+
+            <div class="quick-links">
+                <a href="index.html" class="qlink">🏠 Home</a>
+                <a href="/api/events" target="_blank" class="qlink">📡 API</a>
+                <a href="/h2-console" target="_blank" class="qlink">🗄️ Database</a>
+                <a href="bookings.html" class="qlink">🎫 Bookings</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
